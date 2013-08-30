@@ -25,7 +25,8 @@ gets you the same random number generation each run, but it's cryptic
 refactoring. If the order of the checks in the tested code changes, the
 test results for that seed will change.
 
-== If you know how many times you'll call it ==
+If you know how many times you'll call it
+---
 
 Here's one way to make the tests nice.
 
@@ -62,12 +63,13 @@ guaranteeing the aggregate frequency that we want to test. I like that
 it expresses what I want to test ("it returns true 40% of the time")
 without specifying which forty of the hundred calls returned true.
 
-== If you don't know how many times you'll call it ==
+If you don't know how many times you'll call it
+---
 
 You can also get a sequence that's pretty evenly distributed for an
 unknown length.
 
-  val forever: Iterator[Double] = NotTooRandom.evenDistribution
+    val forever: Iterator[Double] = NotTooRandom.evenDistribution
 
 This gives you an iterator that divides the interval between 0 and 1
 into smaller and smaller pieces as you draw from it. For any power of
@@ -79,7 +81,8 @@ If you'd rather get the same sequence every time, tell it not to:
 
     val theSameForever: Iterator[Double] = NotTooRandom.evenDistribution(NOT_SHUFFLED)
 
-=== boring history ===
+boring history
+===
 
 This came from a blog post:
 http://blog.jessitron.com/2013/08/a-trick-for-deterministic-testing-of.html
